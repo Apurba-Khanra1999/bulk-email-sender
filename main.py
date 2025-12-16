@@ -4,6 +4,7 @@
 import streamlit as st
 import smtplib
 import ssl
+import re
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import pandas as pd
@@ -47,6 +48,21 @@ def load_emails(file):
     return df["email"].dropna().unique().tolist()
 
 
+def minify_html(html_content):
+    """
+    Minify HTML content to reduce size and avoid clipping by email clients.
+    - Removes comments
+    - Removes excessive whitespace between tags
+    """
+    # Remove HTML comments
+    html_content = re.sub(r"<!--[\s\S]*?-->", "", html_content)
+    # Collapse multiple spaces/newlines into a single space
+    html_content = re.sub(r"\s+", " ", html_content)
+    # Remove spaces between tags where safe (e.g. > <)
+    html_content = re.sub(r">\s+<", "><", html_content)
+    return html_content.strip()
+
+
 def send_bulk_email(emails, subject, html_content):
     context = ssl.create_default_context()
 
@@ -78,6 +94,10 @@ if uploaded_file:
                 with st.spinner("Sending emails... Please wait"):
                     try:
                         html_content = template_file.read().decode("utf-8", errors="replace")
+                        
+                        # Minify HTML to avoid clipping
+                        html_content = minify_html(html_content)
+                        
                         send_bulk_email(email_list, subject, html_content)
                         st.success("✅ Emails sent successfully")
                     except Exception as e:
