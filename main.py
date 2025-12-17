@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 
 # ------------------ Page Config & CSS ------------------
 st.set_page_config(
-    page_title="NexusMail - Professional Bulk Sender",
+    page_title="BulkFlow Pro - Professional Bulk Sender",
     page_icon="🚀",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -119,7 +119,7 @@ col_header_1, col_header_2 = st.columns([1, 6])
 with col_header_1:
     st.image("https://cdn-icons-png.flaticon.com/512/2965/2965306.png", width=80)
 with col_header_2:
-    st.title("NexusMail Bulk Sender")
+    st.title("BulkFlow Pro Bulk Sender")
     st.markdown("### 🚀 Professional HTML Email Campaigns")
 
 st.markdown("---")

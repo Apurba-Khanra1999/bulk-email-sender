@@ -1,6 +1,6 @@
-# NexusMail: Streamlit Bulk HTML Email Sender
+# BulkFlow Pro: Streamlit Bulk HTML Email Sender
 
-NexusMail is a Streamlit application for running professional bulk email campaigns using your own HTML email templates and a list of recipients. It provides a polished UI, live progress feedback, rendered HTML previews, and safeguards such as HTML minification to avoid message clipping in clients like Gmail.
+BulkFlow Pro is a Streamlit application for running professional bulk email campaigns using your own HTML email templates and a list of recipients. It provides a polished UI, live progress feedback, rendered HTML previews, and safeguards such as HTML minification to avoid message clipping in clients like Gmail.
 
 ## Features
 
@@ -69,7 +69,7 @@ bob@example.org
 ## Important Notes
 
 - Use an **App Password** for Gmail (Google Account → Security → 2-Step Verification → App Passwords).
-- NexusMail uses **STARTTLS** and `server.login()` for authentication.
+- BulkFlow Pro uses **STARTTLS** and `server.login()` for authentication.
 - Large embedded base64 images in HTML increase size and can still cause Gmail clipping (~102KB limit). Prefer external image URLs.
 
 ## Troubleshooting
@@ -84,14 +84,6 @@ bob@example.org
   - For Gmail, use app-specific password and ensure SMTP is allowed.
 - Nothing sends:
   - Confirm `Subject`, `Template`, and `Recipient List` are provided.
-
-## Code Reference
-
-- UI setup and CSS: `c:\Users\apurb\Downloads\email-python\main.py:14`
-- Recipient loader: `c:\Users\apurb\Downloads\email-python\main.py:76`
-- HTML minifier: `c:\Users\apurb\Downloads\email-python\main.py:88`
-- HTML preview (rendered): `c:\Users\apurb\Downloads\email-python\main.py:168`
-- Send loop and progress: `c:\Users\apurb\Downloads\email-python\main.py:208`
 
 ## Security
 
